@@ -15,7 +15,7 @@ export default function ProfileForm({ user, refresh, closePopup }: any) {
   const update = async () => {
     try {
       await axios.post(
-        "process.env.NEXT_PUBLIC_API_URL/auth/update-profile",
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/update-profile`,
         { name, instagram, gender, bio },
         { withCredentials: true }
       );
@@ -116,7 +116,7 @@ export default function ProfileForm({ user, refresh, closePopup }: any) {
           onClick={async () => {
             try {
               await axios.post(
-                "process.env.NEXT_PUBLIC_API_URL/auth/logout",
+  `${process.env.NEXT_PUBLIC_API_URL}/auth/logout`,
                 {},
                 { withCredentials: true }
               );
