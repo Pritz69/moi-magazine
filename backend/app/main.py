@@ -23,3 +23,8 @@ app.include_router(contact.router)
 @app.get("/")
 def root():
     return {"message": "MOI Magazine API running"}
+
+
+@app.get("/ping")
+def ping():
+    return {"status": "alive"}
