@@ -53,7 +53,7 @@ export default function RegisterForm() {
       if (file3) formData.append("file3", file3);
 
       const res = await axios.post(
-        "http://localhost:8000/auth/submit",
+        "process.env.NEXT_PUBLIC_API_URL/auth/submit",
         formData
       );
 
