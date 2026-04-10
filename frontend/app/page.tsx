@@ -73,9 +73,7 @@ export default function Home() {
   }, []);
 
   const fetchBestWorks = async () => {
-    const res = await axios.get(
-      "process.env.NEXT_PUBLIC_API_URL/images/bestworks"
-    );
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/images/bestworks`);
     setImages(res.data);
   };
 
