@@ -17,9 +17,9 @@ export default function ProfilePage() {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get("process.env.NEXT_PUBLIC_API_URL/auth/me", {
-        withCredentials: true,
-      });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+  withCredentials: true,
+});
       setUser(res.data);
     } catch {
       router.push("/account");
