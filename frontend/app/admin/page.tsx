@@ -13,7 +13,7 @@ export default function Admin() {
   const [contacts, setContacts] = useState<any[]>([]);
 
     const fetchContacts = async () => {
-      const res = await axios.get("process.env.NEXT_PUBLIC_API_URL/admin/contacts", {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/admin/contacts`, {
         withCredentials: true,
       });
       setContacts(res.data);
@@ -25,7 +25,7 @@ export default function Admin() {
       formData.append("name", name);
 
       const res = await axios.post(
-        "process.env.NEXT_PUBLIC_API_URL/admin/genre",
+        `${process.env.NEXT_PUBLIC_API_URL}/admin/genre`,
         formData,
         { withCredentials: true }
       );
@@ -50,7 +50,7 @@ export default function Admin() {
       formData.append("description", description);
 
       const res = await axios.post(
-        "http://localhost:8000/admin/image",
+        `${process.env.NEXT_PUBLIC_API_URL}/admin/image`,
         formData,
         { withCredentials: true }
       );
