@@ -35,7 +35,7 @@ export default function Contact() {
       formData.append("instagram", instagram);
       formData.append("message", message);
 
-      const res = await axios.post("process.env.NEXT_PUBLIC_API_URL/contact", formData);
+      const res = axios.post(`${process.env.NEXT_PUBLIC_API_URL}/contact`, formData);
 
       setStatus(res.data.msg);
 
