@@ -19,7 +19,7 @@ export default function Nominations() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:8000/images/nominations");
+    const res = await axios.get("process.env.NEXT_PUBLIC_API_URL/images/nominations");
     setData(res.data);
   };
 
