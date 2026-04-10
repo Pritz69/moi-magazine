@@ -31,8 +31,8 @@ export default function Account() {
       formData.append("password", password);
 
       const url = isLogin
-        ? "process.env.NEXT_PUBLIC_API_URL/auth/login"
-        : "process.env.NEXT_PUBLIC_API_URL/auth/register";
+  ? `${process.env.NEXT_PUBLIC_API_URL}/auth/login`
+  : `${process.env.NEXT_PUBLIC_API_URL}/auth/register`;
 
       const res = await axios.post(url, formData, {
         withCredentials: true,
