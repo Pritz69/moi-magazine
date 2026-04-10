@@ -25,6 +25,6 @@ def root():
     return {"message": "MOI Magazine API running"}
 
 
-@app.get("/ping")
+@app.api_route("/ping", methods=["GET", "HEAD"])
 def ping():
     return {"status": "alive"}
