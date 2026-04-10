@@ -81,8 +81,8 @@ def login(
         key="token",
         value=token,
         httponly=True,
-        samesite="lax",
-        secure=False,
+        samesite="none",
+        secure=True,
         path="/"   # ✅ ADD THIS
     )
 
