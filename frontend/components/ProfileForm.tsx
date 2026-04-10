@@ -15,7 +15,7 @@ export default function ProfileForm({ user, refresh, closePopup }: any) {
   const update = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/auth/update-profile",
+        "process.env.NEXT_PUBLIC_API_URL/auth/update-profile",
         { name, instagram, gender, bio },
         { withCredentials: true }
       );
