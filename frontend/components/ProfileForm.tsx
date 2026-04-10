@@ -116,7 +116,7 @@ export default function ProfileForm({ user, refresh, closePopup }: any) {
           onClick={async () => {
             try {
               await axios.post(
-                "http://localhost:8000/auth/logout",
+                "process.env.NEXT_PUBLIC_API_URL/auth/logout",
                 {},
                 { withCredentials: true }
               );
