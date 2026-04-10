@@ -23,6 +23,9 @@ export default function ProfileForm({ user, refresh, closePopup }: any) {
       setType("success");
       setMessage("Profile updated successfully!");
 
+      // ✅ 🔥 IMPORTANT FIX
+      window.dispatchEvent(new Event("userChanged"));
+
       setTimeout(() => {
         setMessage("");
         setType("");
