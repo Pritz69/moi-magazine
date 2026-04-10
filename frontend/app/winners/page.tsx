@@ -25,7 +25,7 @@ export default function Winners() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:8000/images/winners");
+    const res = await axios.get("process.env.NEXT_PUBLIC_API_URL/images/winners");
     setData(res.data);
   };
 
