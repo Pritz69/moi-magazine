@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const fetchUser = async () => {
     try {
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
   withCredentials: true,
 });
       setUser(res.data);
