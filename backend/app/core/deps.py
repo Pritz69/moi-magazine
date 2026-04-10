@@ -3,8 +3,9 @@ from jose import jwt
 from sqlalchemy.orm import Session
 from app.models.user import User
 from app.core.db import SessionLocal
+import os
 
-SECRET_KEY = "your-secret-key"
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 
 
