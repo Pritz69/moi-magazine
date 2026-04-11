@@ -270,7 +270,7 @@ export default function Home() {
     }}
     transition={{
       ease: "linear",
-      duration: 30, // Adjust this number to change speed (higher = slower)
+      duration: 25, // Adjust this number to change speed (higher = slower)
       repeat: Infinity,
     }}
     // Optional: Pause on hover

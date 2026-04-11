@@ -143,7 +143,7 @@ export default function Winners() {
     animate={{ x: ["0%", "-50%"] }}
     transition={{
       ease: "linear",
-      duration: 28, // Slightly slower for 'Winners' to feel more prestigious
+      duration: 20, // Slightly slower for 'Winners' to feel more prestigious
       repeat: Infinity,
     }}
     whileHover={{ animationPlayState: "paused" }}

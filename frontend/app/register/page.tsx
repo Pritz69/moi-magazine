@@ -10,9 +10,55 @@ import { FaXTwitter } from "react-icons/fa6";
 export default function RegisterPage() {
   const [showForm, setShowForm] = useState(false);
 
+  // Define editorial images (using high-quality portrait/fashion photography placeholders)
+  const editorialImages = [
+    {
+      url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+      type: "PORTRAITS",
+      aspect: "aspect-[2/3]",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop",
+      type: "FASHION",
+      aspect: "aspect-[4/5]",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop",
+      type: "LIFESTYLE",
+      aspect: "aspect-[2/3]",
+    },
+  ];
+
+  // Framer Motion Variants for Staggered Children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.25, // Delay between each image animating in
+        delayChildren: 1.1, // Wait for the button animation to finish
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 60, opacity: 0, scale: 0.9, filter: "blur(4px)" },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 70,
+        ease: "easeOut",
+      },
+    },
+  }as const;
+
   return (
     <div className="min-h-screen text-white relative overflow-x-hidden">
-
       {/* 🌌 BACKGROUND */}
       <div className="fixed inset-0 -z-10 bg-black">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0f] to-[#050510]" />
@@ -22,13 +68,18 @@ export default function RegisterPage() {
 
       {/* HERO */}
       <section
-        className={`flex flex-col items-center justify-start pt-20 text-center px-4 transition-all duration-500
-        ${showForm ? "pt-16 pb-6" : "min-h-[85vh] pt-10 pb-16"}`}
+        className={`flex flex-col items-center justify-start text-center px-4 transition-all duration-700 ease-in-out
+        ${
+          showForm
+            ? "pt-12 pb-6 min-h-[15vh]"
+            : "min-h-[100vh] pt-16 sm:pt-20 pb-12 sm:pb-16"
+        }`}
       >
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[clamp(1.8rem,7vw,3.5rem)] font-light tracking-wide sm:tracking-widest bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
+          transition={{ duration: 0.8 }}
+          className="text-[clamp(1.8rem,7vw,3.8rem)] font-light tracking-wide sm:tracking-widest bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
         >
           BECOME THE NEXT ICON
         </motion.h1>
@@ -37,7 +88,7 @@ export default function RegisterPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-4 sm:mt-6 max-w-lg text-gray-300 text-[clamp(0.85rem,3.5vw,1.1rem)] leading-relaxed"
+          className="mt-5 sm:mt-6 max-w-lg text-gray-300 text-[clamp(0.85rem,3.5vw,1.1rem)] leading-relaxed"
         >
           Step into a curated world where{" "}
           <span className="text-white font-semibold">
@@ -50,45 +101,94 @@ export default function RegisterPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="mt-3 sm:mt-4 text-yellow-400 text-sm sm:text-lg"
+          className="mt-4 sm:mt-5 text-yellow-400 text-sm sm:text-lg font-medium tracking-wide"
         >
           Monthly Winners Earn ₹15,000 + National Exposure
         </motion.p>
 
         {!showForm && (
-  <>
-    <motion.button
-      initial={{ scale: 0.85, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.8 }}
-      onClick={() => setShowForm(true)}
-      className="mt-8 sm:mt-10 px-8 sm:px-10 py-3 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 text-white font-semibold shadow-xl hover:scale-105 transition"
-    >
-      Start Your Journey
-    </motion.button>
+          <>
+            <motion.button
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              onClick={() => setShowForm(true)}
+              className="mt-10 sm:mt-12 mb-20 sm:mb-24 px-10 sm:px-12 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 text-white font-semibold shadow-2xl hover:scale-105 hover:shadow-purple-500/20 transition duration-300"
+            >
+              Start Your Journey
+            </motion.button>
+
+            {/* ✨ 📸 EDITORIAL ANIMATED COLLAGE */}
+            {/* Added relative position and negative z-index to ensure it sits behind the button if needed, but in front of bg */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="relative w-full max-w-6xl mx-auto grid grid-cols-3 gap-3 md:gap-5 px-2 md:px-0 mt-[-60px] mb-24 items-end pointer-events-none"
+            >
+              {editorialImages.map((img, i) => (
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  className={`${img.aspect} relative group rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)]`}
+                >
+                  {/* Glassmorphism Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10" />
+
+                  {/* Image */}
+                  <img
+                    src={img.url}
+                    alt={img.type}
+                    className="w-full h-full object-cover transition-transform duration-[3s] ease-out scale-105 group-hover:scale-110"
+                  />
+
+                  {/* Typography/Metadata */}
+                  <div className="absolute bottom-2 md:bottom-3 left-2 md:left-4 z-20 text-left">
+                    <p className="font-sans text-[8px] md:text-[10px] tracking-[0.3em] text-gray-400">
+                      MOI
+                    </p>
+                    <p className="text-[clamp(0.6rem,2vw,1.1rem)] font-light tracking-wider text-white mt-0.5 md:mt-1">
+                      {img.type}
+                    </p>
+                  </div>
+
+                  {/* Aesthetic Corner Border Accent */}
+                  <div className="absolute top-3 right-3 w-4 h-4 md:w-6 md:h-6 border-t-2 border-r-2 border-white/20 rounded-tr-sm z-20" />
+                </motion.div>
+              ))}
+            </motion.div>
 
             {/* 🔗 SOCIAL ICONS */}
             <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="flex gap-4 mt-30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2 }} // Delayed further to let the collage finish
+              className="flex gap-5 mt-auto pb-4"
             >
-            {[
+              {[
                 { Icon: FaFacebookF, link: "https://facebook.com" },
                 { Icon: FaInstagram, link: "https://instagram.com" },
                 { Icon: FaEnvelope, link: "mailto:test@example.com" },
                 { Icon: SiThreads, link: "https://threads.net" },
-                { Icon: FaXTwitter, link: "https://x.com" }
-            ].map(({ Icon, link }, i) => (
-                <a key={i} href={link} target="_blank" rel="noopener noreferrer">
-                <div className="p-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition flex items-center justify-center">
-                    <Icon size={16} className="text-white" />
-                </div>
+                { Icon: FaXTwitter, link: "https://x.com" },
+              ].map(({ Icon, link }, i) => (
+                <a
+                  key={i}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="p-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-white/20 hover:scale-110 hover:shadow-lg transition duration-300 flex items-center justify-center">
+                    <Icon
+                      size={18}
+                      className="text-gray-400 group-hover:text-white transition"
+                    />
+                  </div>
                 </a>
-            ))}
+              ))}
             </motion.div>
-        </>
+          </>
         )}
       </section>
 
@@ -99,22 +199,24 @@ export default function RegisterPage() {
             initial={{ y: "-100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} // Cinematic ease-out
             className="fixed inset-0 z-50 flex items-start justify-center px-3 pt-10 pb-4"
           >
             {/* Overlay */}
-            <div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
               onClick={() => setShowForm(false)}
             />
 
             {/* Popup Container */}
-            <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto">
-              
+            <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto custom-scroll">
               {/* ❌ Close Button */}
               <button
                 onClick={() => setShowForm(false)}
-                className="absolute top-2 right-2 z-10 text-white bg-white/10 hover:bg-white/20 rounded-full px-3 py-1 text-sm"
+                className="absolute top-3 right-3 z-10 text-gray-400 bg-white/5 hover:bg-white/10 rounded-full px-3.5 py-1.5 text-sm transition"
               >
                 ✕
               </button>
@@ -125,6 +227,16 @@ export default function RegisterPage() {
         )}
       </AnimatePresence>
 
+      {/* Hide Scrollbar Style */}
+      <style jsx global>{`
+        .custom-scroll::-webkit-scrollbar {
+          display: none;
+        }
+        .custom-scroll {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
     </div>
   );
 }
