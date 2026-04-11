@@ -148,6 +148,104 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ✨ FLOATING EDITORIAL COLLAGE (IMAGES ONLY - 3D MOTION) */}
+      <section className="relative w-full py-8 sm:py-12 px-4 sm:px-6 md:px-16 -mt-4 sm:mt-6 overflow-hidden flex justify-center items-center border-t border-white/5 bg-gradient-to-b from-transparent to-black/80">
+        
+        {/* BACKGROUND GLOW */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[600px] max-h-[600px] bg-purple-900/10 rounded-full blur-[60px] pointer-events-none" />
+
+        {/* 🌀 INFINITE ZOOM TUNNEL EFFECT */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              className="absolute border border-dashed border-white/10 rounded-full aspect-square"
+              initial={{ width: "5%", opacity: 0 }}
+              animate={{ 
+                width: ["5%", "150%"], 
+                opacity: [0, 0.4, 0],
+                rotate: [0, i % 2 === 0 ? 120 : -120] 
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 9, 
+                ease: "linear", 
+                delay: i * 3 // Staggers the rings for a continuous stream
+              }}
+            />
+          ))}
+        </div>
+
+        {/* 📸 Scaled-Down Floating "Editorial Collage" */}
+        <div className="relative w-full max-w-[300px] sm:max-w-[500px] h-[260px] sm:h-[400px] flex items-center justify-center [perspective:1200px]">
+
+          {/* Image 1 (Back/Left - Grayscale) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.1, z: -1000, x: -100, y: 100, rotate: -45 }}
+            whileInView={{ opacity: 1, scale: 1, z: 0, x: 0, y: 0, rotate: -8 }}
+            transition={{ duration: 1.4, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="absolute left-0 sm:left-4 top-4 sm:top-10 z-0"
+          >
+            {/* Inner div handles the infinite floating after the entrance */}
+            <motion.div 
+              animate={{ y: [0, -8, 0], scale: [1, 1.03, 1] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="w-[100px] sm:w-[160px] aspect-[4/5] bg-white p-1 pb-6 sm:p-1.5 sm:pb-8 shadow-[0_15px_30px_rgba(0,0,0,0.6)] rounded-sm"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400" 
+                className="w-full h-full object-cover grayscale opacity-90" 
+                alt="Fashion Left" 
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Image 2 (Front/Center - Main Focus) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.1, z: -1500, y: 150 }}
+            whileInView={{ opacity: 1, scale: 1, z: 0, y: 0 }}
+            transition={{ duration: 1.6, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true }}
+            className="absolute z-10"
+          >
+            <motion.div
+              animate={{ y: [0, -12, 0], scale: [1, 1.04, 1] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="w-[130px] sm:w-[220px] aspect-[3/4] p-1 sm:p-1.5 bg-[#050505] border border-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.9)] rounded-md overflow-hidden group"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" 
+                alt="Fashion Center" 
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Image 3 (Right/Bottom - Glassmorphism) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.1, z: -800, x: 100, y: 50, rotate: 45 }}
+            whileInView={{ opacity: 1, scale: 1, z: 0, x: 0, y: 0, rotate: 6 }}
+            transition={{ duration: 1.3, ease: "easeOut", delay: 0.4 }}
+            viewport={{ once: true }}
+            className="absolute right-0 sm:right-4 bottom-4 sm:bottom-12 z-20"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0], scale: [1, 1.03, 1] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="w-[90px] sm:w-[150px] aspect-square bg-white/5 backdrop-blur-md p-1 sm:p-1.5 border border-white/10 rounded-xl shadow-2xl"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400" 
+                className="w-full h-full object-cover rounded-lg" 
+                alt="Fashion Right" 
+              />
+            </motion.div>
+          </motion.div>
+
+        </div>
+      </section>
+
       {/* 🏆 FEATURES */}
       <section className="px-4 sm:px-6 md:px-16 pt-2 pb-4 relative z-10">
         <div className="flex items-center gap-3">
