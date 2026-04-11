@@ -124,7 +124,7 @@ export default function RegisterPage() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="relative w-full max-w-6xl mx-auto grid grid-cols-3 gap-3 md:gap-5 px-2 md:px-0 mt-[-60px] mb-6 items-end pointer-events-none"
+              className="relative w-full max-w-6xl mx-auto grid grid-cols-3 gap-3 md:gap-5 px-2 md:px-0 mt-[-60px] mb-4 items-end pointer-events-none"
             >
               {editorialImages.map((img, i) => (
                 <motion.div

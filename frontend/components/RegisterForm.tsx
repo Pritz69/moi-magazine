@@ -102,7 +102,7 @@ export default function RegisterForm() {
       rounded-2xl p-3 sm:p-6 space-y-3 sm:space-y-4 shadow-2xl"
     >
       <h2 className="text-base sm:text-xl font-medium text-center tracking-wide">
-        Create Your Profile
+        Submit Your Profile
       </h2>
 
       <input

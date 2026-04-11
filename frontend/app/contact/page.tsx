@@ -139,7 +139,7 @@ export default function Contact() {
 />
 
   <label
-  className={`absolute left-4 top-3 text-sm text-gray-400 
+  className={`pointer-events-none absolute left-4 top-3 text-sm text-gray-400 
   transition-all duration-200
   ${field.value ? "opacity-0 -translate-y-1" : "opacity-100"}
   peer-focus:opacity-0`}
@@ -164,7 +164,7 @@ export default function Contact() {
 />
 
   <label
-  className={`absolute left-4 top-3 text-sm text-gray-400 
+  className={`pointer-events-none absolute left-4 top-3 text-sm text-gray-400 
   transition-all duration-200
   ${message ? "opacity-0 -translate-y-1" : "opacity-100"}
   peer-focus:opacity-0`}
