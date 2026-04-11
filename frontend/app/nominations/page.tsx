@@ -25,7 +25,7 @@ export default function Nominations() {
 
   return (
     <div
-      className="h-screen overflow-hidden text-white relative font-serif"
+      className="h-screen overflow-y-auto text-white relative font-serif"
       onMouseMove={(e) =>
         setMouse({ x: e.clientX, y: e.clientY })
       }
@@ -75,7 +75,7 @@ export default function Nominations() {
       </motion.section>
 
       {/* 🔥 NOMINATIONS */}
-      <div className="px-3 pb-3 space-y-6 relative z-10 h-[84vh] overflow-y-auto custom-scroll">
+      <div className="px-3 pb-3 space-y-6 relative z-10 pb-6 space-y-6 relative z-10 custom-scroll">
 
         {data.map((group, i) => (
           <motion.div
