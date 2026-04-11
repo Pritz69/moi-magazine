@@ -17,9 +17,9 @@ export default function Contact() {
   const [popup, setPopup] = useState("");
   useEffect(() => {
   window.scrollTo({
-    top: 0,
+    top: 800, // The exact pixel distance from the top of the page
     left: 0,
-    behavior: "instant", // or "auto", which bypasses smooth scrolling
+    behavior: "instant", 
   });
 }, []);
   // These are for the top hero section only
