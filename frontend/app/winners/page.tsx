@@ -113,11 +113,11 @@ export default function Winners() {
               {/* ICONS */}
               <div className="flex gap-4 mt-4">
                 {[
-                  { Icon: FaFacebookF, link: "https://facebook.com" },
-                  { Icon: FaInstagram, link: "https://instagram.com" },
-                  { Icon: FaEnvelope, link: "mailto:test@example.com" },
-                  { Icon: SiThreads, link: "https://threads.net" },
-                  { Icon: FaXTwitter, link: "https://x.com" }
+                  { Icon: FaInstagram, link: "https://www.instagram.com/the.moi.magazine?igsh=cTUyNjBpY2NuMTNv" },
+                  { Icon: SiThreads, link: "https://www.threads.com/@the.moi.magazine" },
+                  { Icon: FaFacebookF, link: "https://www.facebook.com/profile.php?id=61573320518711" },
+                  { Icon: FaEnvelope, link: "mailto:themoimagazine@gmail.com" },
+                  { Icon: FaXTwitter, link: "https://www.instagram.com/the.moi.magazine?igsh=cTUyNjBpY2NuMTNv" }
                 ].map(({ Icon, link }, i) => (
                   <a key={i} href={link} target="_blank" rel="noopener noreferrer">
                     <div className="p-3 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:scale-110 transition flex items-center justify-center">

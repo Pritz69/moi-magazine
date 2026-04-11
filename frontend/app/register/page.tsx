@@ -166,11 +166,11 @@ export default function RegisterPage() {
               className="flex gap-5 mt-auto pb-4"
             >
               {[
-                { Icon: FaFacebookF, link: "https://facebook.com" },
-                { Icon: FaInstagram, link: "https://instagram.com" },
-                { Icon: FaEnvelope, link: "mailto:test@example.com" },
-                { Icon: SiThreads, link: "https://threads.net" },
-                { Icon: FaXTwitter, link: "https://x.com" },
+                  { Icon: FaInstagram, link: "https://www.instagram.com/the.moi.magazine?igsh=cTUyNjBpY2NuMTNv" },
+                  { Icon: SiThreads, link: "https://www.threads.com/@the.moi.magazine" },
+                  { Icon: FaFacebookF, link: "https://www.facebook.com/profile.php?id=61573320518711" },
+                  { Icon: FaEnvelope, link: "mailto:themoimagazine@gmail.com" },
+                  { Icon: FaXTwitter, link: "https://www.instagram.com/the.moi.magazine?igsh=cTUyNjBpY2NuMTNv" }
               ].map(({ Icon, link }, i) => (
                 <a
                   key={i}
