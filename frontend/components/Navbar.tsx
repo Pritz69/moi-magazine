@@ -79,7 +79,7 @@ export default function Navbar() {
             { name: "REGISTER", href: "/register" },
             { name: "NOMINATIONS", href: "/nominations" },
             { name: "WINNERS", href: "/winners" },
-            { name: "CONTACT", href: "/contact" },
+            { name: "ABOUT US", href: "/contact" },
           ].map((item, i) => (
             <Link key={i} href={item.href} className="relative group">
               <span className="tracking-wider text-gray-300 group-hover:text-white transition">
@@ -135,7 +135,7 @@ export default function Navbar() {
               { name: "REGISTER", href: "/register" },
               { name: "NOMINATIONS", href: "/nominations" },
               { name: "WINNERS", href: "/winners" },
-              { name: "CONTACT", href: "/contact" },
+              { name: "ABOUT US", href: "/contact" },
             ].map((item, i) => (
               <Link
                 key={i}
