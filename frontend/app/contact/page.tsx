@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -15,6 +15,23 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [popup, setPopup] = useState("");
+
+  useEffect(() => {
+  // Only attach the mouse listener if the device has a real cursor (desktop)
+  const isDesktop = window.matchMedia("(pointer: fine)").matches;
+  
+  if (!isDesktop) return;
+
+  const handleMouseMove = (e: MouseEvent) => {
+    setMouse({ x: e.clientX, y: e.clientY });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+  
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, []);
   // These are for the top hero section only
   const { scrollY } = useScroll();
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.05]);
@@ -59,9 +76,9 @@ export default function Contact() {
   return (
     <div
       className="min-h-screen text-white relative overflow-x-hidden font-serif scroll-smooth"
-      onMouseMove={(e) =>
-        setMouse({ x: e.clientX, y: e.clientY })
-      }
+      // onMouseMove={(e) =>
+      //   setMouse({ x: e.clientX, y: e.clientY })
+      // }
       style={{ scrollBehavior: "smooth" }}
     >
       {/* 🌌 BACKGROUND */}
@@ -78,7 +95,7 @@ export default function Contact() {
 
       {/* 🖱️ MOUSE GLOW */}
       <div
-        className="pointer-events-none absolute  inset-0 z-0"
+        className="hidden md:block pointer-events-none absolute inset-0 z-0" // Add hidden md:block here
         style={{
           background: `radial-gradient(circle at ${mouse.x}px ${mouse.y}px, rgba(255,255,255,0.06), transparent 240px)`
         }}
