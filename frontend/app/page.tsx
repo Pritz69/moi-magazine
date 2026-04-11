@@ -271,24 +271,23 @@ export default function Home() {
 
       {/* 🔥 HORIZONTAL SCROLL */}
       {/* 🔥 AUTO-SCROLLING BEST WORKS */}
+{/* 🔥 AUTO-SCROLLING BEST WORKS */}
 <section className="relative z-10 overflow-hidden py-10">
   <motion.div
-    className="flex gap-4"
+    className="flex gap-4 w-max" /* Added w-max here */
     animate={{
-      x: ["0%", "-50%"], // Moves halfway because the list is doubled
+      x: ["0%", "-50%"], 
     }}
     transition={{
       ease: "linear",
-      duration: 20, // Adjust this number to change speed (higher = slower)
+      duration: 20, 
       repeat: Infinity,
     }}
-    // Optional: Pause on hover
-    whileHover={{ x:0}}
   >
     {/* Render the images twice for a seamless loop */}
-    {[...images,...images].map((img, i) => (
+    {[...images, ...images].map((img, i) => (
       <div
-        key={`${img.id}-${i}`} // Unique key for the duplicated items
+        key={`${img.id}-${i}`}
         className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] group cursor-pointer"
         onClick={() => setSelectedImage(img)}
       >
