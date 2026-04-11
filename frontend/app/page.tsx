@@ -261,38 +261,49 @@ export default function Home() {
       </section>
 
       {/* 🔥 HORIZONTAL SCROLL */}
-      <section className="px-4 sm:px-6 md:px-16 pb-10 overflow-x-auto flex gap-4 relative z-10 custom-scroll">
+      {/* 🔥 AUTO-SCROLLING BEST WORKS */}
+<section className="relative z-10 overflow-hidden py-10">
+  <motion.div
+    className="flex gap-4"
+    animate={{
+      x: ["0%", "-50%"], // Moves halfway because the list is doubled
+    }}
+    transition={{
+      ease: "linear",
+      duration: 30, // Adjust this number to change speed (higher = slower)
+      repeat: Infinity,
+    }}
+    // Optional: Pause on hover
+    whileHover={{ animationPlayState: "paused" }}
+  >
+    {/* Render the images twice for a seamless loop */}
+    {[...images].map((img, i) => (
+      <div
+        key={`${img.id}-${i}`} // Unique key for the duplicated items
+        className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] group cursor-pointer"
+        onClick={() => setSelectedImage(img)}
+      >
+        <div className="relative overflow-hidden rounded-xl bg-black">
+          <img
+            src={img.url}
+            alt={img.title}
+            className="w-full h-[160px] sm:h-[200px] md:h-[220px] object-contain group-hover:scale-110 transition duration-500"
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
+        </div>
 
-        {images.slice(0, visibleCount).map((img, i) => (
-          <motion.div
-            key={img.id}
-            className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] group cursor-pointer"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
-            onClick={() => setSelectedImage(img)}
-          >
-            <div className="relative overflow-hidden rounded-xl bg-black">
-
-              <img
-                src={img.url}
-                className="w-full h-[160px] sm:h-[200px] md:h-[220px] object-contain group-hover:scale-110 transition duration-500"
-              />
-
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
-            </div>
-
-            <div className="mt-2">
-              <p className="font-semibold line-clamp-1 text-[clamp(0.75rem,2.5vw,0.95rem)]">
-                {img.title}
-              </p>
-              <p className="text-gray-400 line-clamp-2 text-[clamp(0.65rem,2.3vw,0.8rem)]">
-                {img.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+        <div className="mt-2">
+          <p className="font-semibold line-clamp-1 text-[clamp(0.75rem,2.5vw,0.95rem)]">
+            {img.title}
+          </p>
+          <p className="text-gray-400 line-clamp-2 text-[clamp(0.65rem,2.3vw,0.8rem)]">
+            {img.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </motion.div>
+</section>
 
             {/* 🖼️ MODAL */}
       {selectedImage && (

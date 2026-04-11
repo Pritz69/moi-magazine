@@ -136,51 +136,55 @@ export default function Winners() {
 
             {/* GRID */}
             {/* HORIZONTAL SCROLL */}
-            <div className="flex gap-4 overflow-x-auto pb-2 custom-scroll">
+            {/* 🎬 AUTO-SCROLLING HORIZONTAL CARDS */}
+<div className="relative overflow-hidden py-2">
+  <motion.div
+    className="flex gap-4 w-max"
+    animate={{ x: ["0%", "-50%"] }}
+    transition={{
+      ease: "linear",
+      duration: 28, // Slightly slower for 'Winners' to feel more prestigious
+      repeat: Infinity,
+    }}
+    whileHover={{ animationPlayState: "paused" }}
+  >
+    {/* Duplicate images for seamless loop */}
+    {[...group.images].map((img: any, index: number) => (
+      <motion.div
+        key={`${img.id}-${index}`}
+        className="min-w-[140px] sm:min-w-[180px] md:min-w-[200px] cursor-pointer"
+        onClick={() => setSelectedImage(img)}
+        whileTap={{ scale: 0.95 }}
+      >
+        {/* CARD */}
+        <div className="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] group">
+          {/* Winner Glow - Gold/Orange tint */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-pink-500/20 blur-xl" />
 
-              {group.images.map((img: any, index: number) => (
-                <motion.div
-                  key={img.id}
-                  className="min-w-[140px] sm:min-w-[180px] md:min-w-[200px] cursor-pointer"
-                  onClick={() => setSelectedImage(img)}
+          <div className="w-full h-44 flex items-center justify-center bg-black/40">
+            <img
+              src={img.url}
+              alt={img.title}
+              className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110"
+            />
+          </div>
 
-                  initial={{ y: -120, opacity: 0, rotate: -4 }}
-                  whileInView={{ y: 0, opacity: 1, rotate: 0 }}
-                  transition={{
-                    delay: index * 0.08,
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 12
-                  }}
-                >
-                  {/* CARD */}
-                  <div className="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] group">
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
+        </div>
 
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-pink-500/20 blur-xl" />
-
-                    <div className="w-full h-44 flex items-center justify-center bg-black/40">
-                      <img
-                        src={img.url}
-                        className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110"
-                      />
-                    </div>
-
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
-                  </div>
-
-                  {/* TEXT */}
-                  <div className="mt-3 space-y-1">
-                    <p className="text-sm font-semibold line-clamp-1 tracking-wide">
-                      {img.title}
-                    </p>
-                    <p className="text-xs text-gray-400 line-clamp-2">
-                      {img.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-
-            </div>
+        {/* TEXT */}
+        <div className="mt-3 space-y-1">
+          <p className="text-sm font-semibold line-clamp-1 tracking-wide">
+            {img.title}
+          </p>
+          <p className="text-xs text-gray-400 line-clamp-2">
+            {img.description}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+</div>
 
           </motion.div>
         ))}
