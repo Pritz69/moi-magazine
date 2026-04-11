@@ -191,11 +191,11 @@ export default function Home() {
             <motion.div 
               animate={{ y: [0, -8, 0], scale: [1, 1.03, 1] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="w-[100px] sm:w-[160px] aspect-[4/5] bg-white p-1 pb-6 sm:p-1.5 sm:pb-8 shadow-[0_15px_30px_rgba(0,0,0,0.6)] rounded-sm"
+              className="w-[100px] sm:w-[160px] aspect-[4/5] bg-white  shadow-[0_15px_30px_rgba(0,0,0,0.6)] rounded-sm"
             >
               <img 
-                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400" 
-                className="w-full h-full object-cover grayscale opacity-90" 
+                src="https://res.cloudinary.com/drmtzvjtm/image/upload/v1775913411/Your_Mommy_in_your_town_Model-_Sayani_Inner_Stockings-_Mynta_Shoot_on-_Ni_s9tzyr.webp" 
+                className="w-full h-full object-cover " 
                 alt="Fashion Left" 
               />
             </motion.div>
@@ -215,7 +215,7 @@ export default function Home() {
               className="w-[130px] sm:w-[220px] aspect-[3/4] p-1 sm:p-1.5 bg-[#050505] border border-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.9)] rounded-md overflow-hidden group"
             >
               <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400" 
+                src="https://res.cloudinary.com/drmtzvjtm/image/upload/v1775913288/%E0%A6%B8%E0%A7%82%E0%A6%9A%E0%A6%A8%E0%A6%BE_._.._pujo_durgapuja_agomoni_red_saree_lotus_kolkata_culture_photooftheday_ph_1_usivpx.jpg" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out" 
                 alt="Fashion Center" 
               />
@@ -233,11 +233,11 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -10, 0], scale: [1, 1.03, 1] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="w-[90px] sm:w-[150px] aspect-square bg-white/5 backdrop-blur-md p-1 sm:p-1.5 border border-white/10 rounded-xl shadow-2xl"
+              className="w-[90px] sm:w-[150px] aspect-square bg-white/5 backdrop-blur-md  border border-white/10 rounded-xl shadow-2xl overflow-hidden"
             >
               <img 
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400" 
-                className="w-full h-full object-cover rounded-lg" 
+                src="https://res.cloudinary.com/drmtzvjtm/image/upload/v1775914748/Another_set_w-_monsoon.yesfr_kgxxgs.jpg" 
+                className="w-full h-full object-contain " 
                 alt="Fashion Right" 
               />
             </motion.div>

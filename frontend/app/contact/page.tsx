@@ -146,7 +146,7 @@ export default function Contact() {
             className="group flex flex-col items-center gap-2 cursor-pointer outline-none"
             aria-label="Scroll to contact"
           >
-            <span className="text-[0.45rem] tracking-[0.3em] text-gray-500/60 uppercase group-hover:text-yellow-400 transition-colors">
+            <span className="text-[0.45rem] tracking-[0.3em] text-gray-500/80 uppercase group-hover:text-yellow-400 transition-colors">
               Contact
             </span>
             <motion.div

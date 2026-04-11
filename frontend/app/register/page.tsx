@@ -13,17 +13,17 @@ export default function RegisterPage() {
   // Define editorial images (using high-quality portrait/fashion photography placeholders)
   const editorialImages = [
     {
-      url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+      url: "https://res.cloudinary.com/drmtzvjtm/image/upload/v1775914448/%E0%A6%9F%E0%A7%81%E0%A6%95%E0%A6%B0%E0%A7%8B_%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF_%E0%A6%AE%E0%A6%A8%E0%A7%87%E0%A6%B0_%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A7%87_...._trending_followkaropublic_followforfollowback_followers_fo_2_z8zgon.jpg",
       type: "PORTRAITS",
       aspect: "aspect-[2/3]",
     },
     {
-      url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop",
-      type: "FASHION",
+      url: "https://res.cloudinary.com/drmtzvjtm/image/upload/v1775913950/1_x3beav.jpg",
+      type: "BOLDS",
       aspect: "aspect-[4/5]",
     },
     {
-      url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop",
+      url: "https://res.cloudinary.com/drmtzvjtm/image/upload/v1775913105/%E0%A6%8F%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%93_%E0%A6%A4%E0%A7%8B_%E0%A6%AC%E0%A6%B2%E0%A6%A4%E0%A7%87_%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8B_......._likeforlikes_bonggirl_instagram_likeforlike_picoftheday_two4r6.webp",
       type: "LIFESTYLE",
       aspect: "aspect-[2/3]",
     },
