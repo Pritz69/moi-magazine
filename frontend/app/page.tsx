@@ -283,10 +283,10 @@ export default function Home() {
       repeat: Infinity,
     }}
     // Optional: Pause on hover
-    whileHover={{ animationPlayState: "paused" }}
+    whileHover={{ x:0}}
   >
     {/* Render the images twice for a seamless loop */}
-    {[...images].map((img, i) => (
+    {[...images,...images].map((img, i) => (
       <div
         key={`${img.id}-${i}`} // Unique key for the duplicated items
         className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] group cursor-pointer"
