@@ -113,7 +113,7 @@ export default function RegisterPage() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.5 }}
               onClick={() => setShowForm(true)}
-              className="mt-10 sm:mt-12 mb-20 sm:mb-24 px-10 sm:px-12 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 text-white font-semibold shadow-2xl hover:scale-105 hover:shadow-purple-500/20 transition duration-300"
+              className="mt-10 sm:mt-12 mb-30 sm:mb-24 px-4 sm:px-12 py-1.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 text-white font-semibold shadow-2xl hover:scale-105 hover:shadow-purple-500/20 transition duration-300"
             >
               Start Your Journey
             </motion.button>
@@ -124,7 +124,7 @@ export default function RegisterPage() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="relative w-full max-w-6xl mx-auto grid grid-cols-3 gap-3 md:gap-5 px-2 md:px-0 mt-[-60px] mb-24 items-end pointer-events-none"
+              className="relative w-full max-w-6xl mx-auto grid grid-cols-3 gap-3 md:gap-5 px-2 md:px-0 mt-[-60px] mb-6 items-end pointer-events-none"
             >
               {editorialImages.map((img, i) => (
                 <motion.div
