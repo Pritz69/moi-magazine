@@ -87,12 +87,24 @@ export default function Nominations() {
             className="space-y-3"
           >
             {/* TITLE */}
-            <div className="flex items-center gap-2">
-              <h2 className="text-sm sm:text-lg font-semibold capitalize tracking-wide">
-                {group.genre}
-              </h2>
-              <div className="h-[1px] bg-gradient-to-r from-gray-700 to-transparent flex-1"></div>
-            </div>
+<div className="flex items-center gap-3 group">
+
+  {/* 🎬 TITLE */}
+  <motion.h2
+    initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    transition={{ duration: 0.6 }}
+    className="relative text-sm sm:text-lg font-light tracking-[0.25em] uppercase bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.3)]"
+  >
+    {group.genre}
+
+    {/* ✨ ANIMATED UNDERLINE */}
+    <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 group-hover:w-full transition-all duration-500" />
+  </motion.h2>
+
+  {/* 💎 SIDE LINE */}
+  <div className="h-[1px] flex-1 bg-gradient-to-r from-gray-700 to-transparent transition-all duration-500" />
+</div>
 
             {/* 🎬 HORIZONTAL CARDS */}
             <div className="flex gap-4 overflow-x-auto pb-2 custom-scroll">

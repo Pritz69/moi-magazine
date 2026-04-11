@@ -29,6 +29,20 @@ export default function Winners() {
     setData(res.data);
   };
 
+  const genreMap: Record<string, string> = {
+    classic: "Spotlight",
+    artistic: "Iconic",
+    portraits: "Spotlight",
+
+    bold: "Vault",
+    "fine arts": "Vault",
+    nudes: "Vault",
+    boudoirs: "Vault",
+
+    anime: "Vault",
+    "high fashions": "Spotlight",
+  };
+
   return (
     <div
       className="h-screen overflow-hidden text-white relative font-serif"
@@ -128,9 +142,46 @@ export default function Winners() {
           >
             {/* TITLE */}
             <div className="flex items-center gap-2">
-              <h2 className="text-sm sm:text-lg font-semibold capitalize tracking-wide">
-                {group.genre}
-              </h2>
+              <div className="flex items-center gap-3 group">
+  
+  {/* 🔥 TITLE */}
+  <motion.h2
+    initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    transition={{ duration: 0.6 }}
+    className={`relative text-sm sm:text-lg font-light tracking-[0.25em] uppercase
+      ${
+        (genreMap[group.genre?.toLowerCase()] || group.genre) === "Spotlight"
+          ? "bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.3)]"
+          : "bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent"
+      }
+    `}
+  >
+    {genreMap[group.genre?.toLowerCase()] || group.genre}
+
+    {/* ✨ GLOW LINE */}
+    <span
+      className={`absolute -bottom-1 left-0 h-[1px] w-0 group-hover:w-full transition-all duration-500
+        ${
+          (genreMap[group.genre?.toLowerCase()] || group.genre) === "Spotlight"
+            ? "bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400"
+            : "bg-gradient-to-r from-gray-500 to-transparent"
+        }
+      `}
+    />
+  </motion.h2>
+
+  {/* 💎 SIDE ACCENT */}
+  <div
+    className={`h-[1px] flex-1 transition-all duration-500
+      ${
+        (genreMap[group.genre?.toLowerCase()] || group.genre) === "Spotlight"
+          ? "bg-gradient-to-r from-yellow-400/50 to-transparent"
+          : "bg-gradient-to-r from-gray-600 to-transparent"
+      }
+    `}
+  />
+</div>
               <div className="h-[1px] bg-gradient-to-r from-gray-700 to-transparent flex-1"></div>
             </div>
 

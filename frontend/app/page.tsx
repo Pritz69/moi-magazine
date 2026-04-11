@@ -248,12 +248,21 @@ export default function Home() {
 
       {/* 🏆 FEATURES */}
       <section className="px-4 sm:px-6 md:px-16 pt-2 pb-4 relative z-10">
-        <div className="flex items-center gap-3">
-          <h2 className="font-semibold text-[clamp(1.2rem,4vw,2rem)]">
-            FEATURES
-          </h2>
-          <div className="h-[1px] bg-gray-700 flex-1"></div>
-        </div>
+        <div className="flex items-center gap-3 group">
+
+  {/* TITLE */}
+  <h2
+    className="relative text-sm sm:text-2xl font-light tracking-[0.25em] uppercase bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.3)]"
+  >
+    HIGHLIGHTS
+
+    {/* ✨ UNDERLINE */}
+    <span className="absolute -bottom-1 left-0 h-[1px] w-0  bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 group-hover:w-full transition-all duration-500" />
+  </h2>
+
+  {/* 💎 SIDE LINE */}
+  <div className="h-[1px] flex-1 bg-gradient-to-r from-yellow-400/50 to-transparent transition-all duration-500" />
+</div>
 
         <p className="text-gray-500 mt-3 max-w-md text-[clamp(0.7rem,2.5vw,0.9rem)]">
           A curated selection of standout visuals capturing elegance, emotion, and storytelling.
