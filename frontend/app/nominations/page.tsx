@@ -100,7 +100,7 @@ export default function Nominations() {
               {group.images.map((img: any, index: number) => (
                 <motion.div
                   key={img.id}
-                  className="min-w-[120px] sm:min-w-[170px] cursor-pointer"
+                  className="min-w-[140px] sm:min-w-[190px] cursor-pointer"
                   
                   /* 🪂 FALL ANIMATION */
                   initial={{ y: -120, opacity: 0, rotate: -5 }}
@@ -122,7 +122,7 @@ export default function Nominations() {
 
                     <img
                       src={img.url}
-                      className="w-full h-[16vh] sm:h-[18vh] object-contain transition duration-500 group-hover:scale-110"
+                      className="w-full h-[18vh] sm:h-[21vh] object-contain transition duration-500 group-hover:scale-110"
                     />
 
                     {/* overlay */}
@@ -153,7 +153,7 @@ export default function Nominations() {
             initial={{ scale: 0.8, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 90 }}
-            className="relative w-[85%] max-w-xs sm:max-w-sm bg-[#0a0a12]/95 border border-white/10 rounded-2xl shadow-2xl p-4 text-center"
+            className="relative w-[90%] max-w-md sm:max-w-lg bg-[#0a0a12]/95 border border-white/10 rounded-2xl shadow-2xl p-4 text-center"
           >
             {/* ❌ CLOSE BUTTON */}
             <button
@@ -166,7 +166,7 @@ export default function Nominations() {
             {/* IMAGE */}
             <img
               src={selectedImage.url}
-              className="w-full max-h-[22vh] object-contain rounded-lg"
+              className="w-full max-h-[32vh] object-contain rounded-lg"
             />
 
             {/* TEXT */}

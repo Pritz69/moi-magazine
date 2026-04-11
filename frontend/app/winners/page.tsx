@@ -195,7 +195,7 @@ export default function Winners() {
           <motion.div
             initial={{ scale: 0.8, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="relative w-[85%] max-w-xs sm:max-w-sm bg-[#0a0a12]/95 border border-white/10 rounded-2xl shadow-2xl p-4 text-center"
+            className="relative w-[92%] max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl bg-[#0a0a12]/95 border border-white/10 rounded-2xl shadow-2xl p-4 text-center"
           >
             {/* CLOSE */}
             <button
@@ -208,7 +208,7 @@ export default function Winners() {
             {/* IMAGE */}
             <img
               src={selectedImage.url}
-              className="w-full max-h-[22vh] object-contain rounded-lg"
+              className="w-full max-h-[35vh] sm:max-h-[45vh] object-contain rounded-lg"
             />
 
             {/* TEXT */}
