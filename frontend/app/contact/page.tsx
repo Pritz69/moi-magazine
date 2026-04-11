@@ -16,8 +16,12 @@ export default function Contact() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [popup, setPopup] = useState("");
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    left: 0,
+    behavior: "instant", 
+  });
+}, []);
   // These are for the top hero section only
   const { scrollY } = useScroll();
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.05]);
