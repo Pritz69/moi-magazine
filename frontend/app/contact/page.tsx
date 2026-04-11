@@ -114,53 +114,63 @@ export default function Contact() {
       />
 
       {/* 🌟 HERO: ABOUT US + SCROLL ICON */}
+      {/* 🌟 HERO: ABOUT US + SCROLL ICON */}
       <motion.section
         style={{ scale: heroScale, opacity: heroOpacity }}
-        className="h-[16vh] flex items-center justify-center text-center px-4 mt-2"
+        // 1. Added relative, w-full, and max-w-screen-xl to control the layout boundaries
+        className="relative w-full max-w-screen-xl mx-auto h-[16vh] flex items-center justify-center text-center px-4 mt-2"
       >
-        <div className="flex items-center gap-6 md:gap-8">
-          <h1 className="tracking-[0.5em] font-light text-[clamp(1.6rem,5vw,2.8rem)] flex">
-            {"ABOUT US".split("").map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,200,0,0.3)]"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </h1>
+        {/* 2. Text remains perfectly centered */}
+        <h1 className="tracking-[0.5em] font-light text-[clamp(1.6rem,5vw,2.8rem)] flex">
+          {"ABOUT US".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
+              className="bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,200,0,0.3)]"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </h1>
 
-          {/* 🖱️ PREMIUM SCROLL PILL */}
+        {/* 3. Button wrapped in absolute positioning to push it to the right margin */}
+        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2">
           <motion.button
             onClick={scrollToContact}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1, duration: 1 }}
             whileHover={{ scale: 1.1 }}
-            className="group relative flex flex-col items-center cursor-pointer"
+            className="group flex flex-col items-center gap-2 cursor-pointer outline-none"
             aria-label="Scroll to contact"
           >
-            {/* The Pill Shape */}
-            <div className="w-[22px] h-[38px] rounded-full border border-white/20 flex justify-center p-1.5 group-hover:border-yellow-400/50 transition-colors duration-500">
-              {/* The Moving Dot */}
-              <motion.div
-                animate={{
-                  y: [0, 12, 0],
-                  opacity: [1, 0.5, 1],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-1.5 h-1.5 rounded-full bg-gradient-to-b from-yellow-400 to-orange-500 shadow-[0_0_10px_rgba(250,204,21,0.6)]"
-              />
-            </div>
-            {/* Subtle glow behind the pill */}
-            <div className="absolute inset-0 bg-yellow-400/5 blur-lg rounded-full -z-10 group-hover:bg-yellow-400/10 transition-all" />
+            <span className="text-[0.55rem] tracking-[0.3em] text-gray-500 uppercase group-hover:text-yellow-400 transition-colors">
+              Connect
+            </span>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="relative flex items-center justify-center"
+            >
+              {/* Visual "Pulse" behind the icon */}
+              <div className="absolute inset-0 bg-yellow-400/20 blur-xl rounded-full scale-150 animate-pulse" />
+              
+              <svg 
+                width="28" 
+                height="28" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="text-white/70 group-hover:text-yellow-400 transition-colors drop-shadow-md"
+              >
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+              </svg>
+            </motion.div>
           </motion.button>
         </div>
       </motion.section>
@@ -183,7 +193,7 @@ export default function Contact() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
                     <h2 className="text-[0.65rem] tracking-[0.4em] font-light text-yellow-400/80 uppercase">
-                      The #1 Destination of Visual Arts
+                      <i>#1</i> Destination of Visual Arts
                     </h2>
                   </div>
                   <h3 className="text-2xl md:text-3xl font-light tracking-wide text-white drop-shadow-md">
