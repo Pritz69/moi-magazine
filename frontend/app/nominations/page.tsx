@@ -95,52 +95,50 @@ export default function Nominations() {
             </div>
 
             {/* 🎬 HORIZONTAL CARDS */}
-            {/* 🎬 AUTO-SCROLLING HORIZONTAL CARDS */}
-<div className="relative overflow-hidden group/container py-2">
-  <motion.div
-    className="flex gap-4 w-max" // w-max is crucial for the track length
-    animate={{ x: ["0%", "-50%"] }}
-    transition={{
-      ease: "linear",
-      duration: 30, // Adjust speed (higher = slower)
-      repeat: Infinity,
-    }}
-    // Pauses this specific row when hovered
-    whileHover={{ animationPlayState: "paused" }}
-  >
-    {/* Duplicate the array to create the infinite loop effect */}
-    {[...group.images].map((img: any, index: number) => (
-      <motion.div
-        key={`${img.id}-${index}`}
-        className="min-w-[140px] sm:min-w-[190px] cursor-pointer"
-        onClick={() => setSelectedImage(img)}
-        whileTap={{ scale: 0.95 }}
-      >
-        {/* GLASS CARD */}
-        <div className="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] group">
-          {/* glow ring */}
-          <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-xl" />
+            <div className="flex gap-4 overflow-x-auto pb-2 custom-scroll">
 
-          <img
-            src={img.url}
-            alt={img.title}
-            className="w-full h-[18vh] sm:h-[21vh] object-contain transition duration-500 group-hover:scale-110"
-          />
+              {group.images.map((img: any, index: number) => (
+                <motion.div
+                  key={img.id}
+                  className="min-w-[140px] sm:min-w-[190px] cursor-pointer"
+                  
+                  /* 🪂 FALL ANIMATION */
+                  initial={{ y: -120, opacity: 0, rotate: -5 }}
+                  whileInView={{ y: 0, opacity: 1, rotate: 0 }}
+                  transition={{
+                    delay: index * 0.08,
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 12
+                  }}
 
-          {/* overlay */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
-        </div>
+                  onClick={() => setSelectedImage(img)}
+                >
+                  {/* GLASS CARD */}
+                  <div className="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] group">
 
-        {/* TEXT */}
-        <div className="mt-3">
-          <p className="font-medium line-clamp-1 text-[11px] sm:text-xs tracking-wide">
-            {img.title}
-          </p>
-        </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
+                    {/* glow ring */}
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-xl" />
+
+                    <img
+                      src={img.url}
+                      className="w-full h-[18vh] sm:h-[21vh] object-contain transition duration-500 group-hover:scale-110"
+                    />
+
+                    {/* overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
+                  </div>
+
+                  {/* TEXT */}
+                  <div className="mt-3">
+                    <p className="font-medium line-clamp-1 text-[11px] sm:text-xs tracking-wide">
+                      {img.title}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+
+            </div>
           </motion.div>
         ))}
 
