@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect } from "react";
+
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -15,13 +15,6 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [popup, setPopup] = useState("");
-  useEffect(() => {
-  window.scrollTo({
-    top: 800, // The exact pixel distance from the top of the page
-    left: 0,
-    behavior: "instant", 
-  });
-}, []);
   // These are for the top hero section only
   const { scrollY } = useScroll();
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.05]);
