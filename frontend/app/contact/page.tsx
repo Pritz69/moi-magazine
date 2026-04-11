@@ -3,6 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -14,7 +15,9 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [popup, setPopup] = useState("");
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // These are for the top hero section only
   const { scrollY } = useScroll();
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.05]);
@@ -58,13 +61,14 @@ export default function Contact() {
 
   return (
     <div
-      className="min-h-screen text-white relative overflow-x-hidden font-serif"
+      className="min-h-screen text-white relative overflow-x-hidden font-serif scroll-smooth"
       onMouseMove={(e) =>
         setMouse({ x: e.clientX, y: e.clientY })
       }
+      style={{ scrollBehavior: "smooth" }}
     >
       {/* 🌌 BACKGROUND */}
-      <div className="fixed inset-0 -z-10 bg-black">
+      <div className="absolute inset-0 -z-10 bg-black">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-[#070710] to-[#020205]" />
 
         {/* glowing blobs */}
@@ -77,7 +81,7 @@ export default function Contact() {
 
       {/* 🖱️ MOUSE GLOW */}
       <div
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none absolute  inset-0 z-0"
         style={{
           background: `radial-gradient(circle at ${mouse.x}px ${mouse.y}px, rgba(255,255,255,0.06), transparent 240px)`
         }}
@@ -86,7 +90,7 @@ export default function Contact() {
       {/* 🌟 HERO: ABOUT US */}
       <motion.section
         style={{ scale: heroScale, opacity: heroOpacity }}
-        className="h-[9vh] flex flex-col items-center justify-center text-center px-4 mt-1"
+        className="h-[14vh] flex flex-col items-center justify-center text-center px-4 mt-1"
       >
         <h1 className="tracking-[0.5em] font-light text-[clamp(1.6rem,5vw,2.8rem)] flex">
           {"ABOUT US".split("").map((char, i) => (
@@ -168,8 +172,8 @@ export default function Contact() {
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="h-[14vh] flex flex-col items-center justify-center text-center px-4 mt-1"
+        viewport={{ once: true}}
+        className="h-[14vh] flex flex-col items-center justify-center text-center px-4 mt-6"
       >
         <h1 className="tracking-[0.5em] font-light text-[clamp(1.6rem,5vw,2.8rem)] flex">
           {"CONTACT".split("").map((char, i) => (
@@ -192,7 +196,7 @@ export default function Contact() {
       </motion.section>
 
       {/* ✨ FORM SECTION */}
-      <div className="flex justify-center px-4 pb-12 relative z-10">
+      <div className="flex justify-center px-4 py-10 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
