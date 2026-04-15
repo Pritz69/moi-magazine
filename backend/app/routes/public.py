@@ -67,33 +67,3 @@ def get_bestworks(db: Session = Depends(get_db)):
         Image.category == "bestworks"
     ).all()
 
-
-from app.models.user import User
-from app.models.genre import Genre
-from app.models.image import Image
-from app.models.submission import Submission
-from app.models.contact import Contact
-
-
-def serialize(model_instance):
-    return {
-        column.name: getattr(model_instance, column.name)
-        for column in model_instance.__table__.columns
-    }
-
-
-@router.get("/export-db")
-def export_database(db: Session = Depends(get_db)):
-    try:
-        data = {}
-
-        data["users"] = [serialize(u) for u in db.query(User).all()]
-        data["genres"] = [serialize(g) for g in db.query(Genre).all()]
-        data["images"] = [serialize(i) for i in db.query(Image).all()]
-        data["submissions"] = [serialize(s) for s in db.query(Submission).all()]
-        data["contacts"] = [serialize(c) for c in db.query(Contact).all()]
-
-        return data
-
-    except Exception as e:
-        return {"error": str(e)}
